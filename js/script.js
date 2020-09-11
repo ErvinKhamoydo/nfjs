@@ -59,6 +59,9 @@ function playGame() {
         moveRoad();
         moveEnemy();
 
+        setting.score++;
+        score.textContent = setting.score;
+
         if (keys.ArrowLeft && setting.x > 25) {
             setting.x -= setting.speed;
         }
@@ -105,6 +108,16 @@ function moveEnemy() {
         if (itemEnemy.y >= document.documentElement.clientHeight) {
             itemEnemy.y = -100 * setting.traffic;
             itemEnemy.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 50)) + 'px';
+        }
+
+        let carRect = car.getBoundingClientRect();
+        let enemyRect = itemEnemy.getBoundingClientRect();
+
+        if (carRect.top <= enemyRect.bottom &&
+            carRect.right >= enemyRect.left &&
+            carRect.left <= enemyRect.right &&
+            carRect.bottom >= enemyRect.top) {
+                setting.start = false;
         }
     });
 }
