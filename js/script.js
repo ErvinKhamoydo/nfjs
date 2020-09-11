@@ -18,11 +18,17 @@ const setting = {
 const car = document.createElement('div');
 car.classList.add('car');
 
+function getQuantityElements(heightElement) {
+    return document.documentElement.clientHeight / heightElement;
+}
+
+console.log(getQuantityElements(50));
+
 function startGame() {
     start.classList.add('hide');
     setting.start = true;
 
-    for (let i = 0; i < document.documentElement.clientHeight / 105; i++) {
+    for (let i = 0; i < getQuantityElements(100); i++) {
         const line = document.createElement('div');
         line.classList.add('line');
         line.style.top = (i * 100) + 'px';
@@ -73,7 +79,7 @@ function moveRoad() {
         line.style.top = line.y + 'px';
 
         if (line.y >= document.documentElement.clientHeight) {
-            line.y = 0;
+            line.y = -100;
         }
     });
 }
