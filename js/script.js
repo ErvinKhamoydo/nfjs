@@ -40,6 +40,7 @@ function startGame() {
 
 function playGame() {
     if (setting.start) {
+        moveRoad();
 
         if (keys.ArrowLeft && setting.x > 25) {
             setting.x -= setting.speed;
@@ -62,6 +63,19 @@ function playGame() {
 
         requestAnimationFrame(playGame);
     }
+}
+
+function moveRoad() {
+    let lines = document.querySelectorAll('.line');
+
+    lines.forEach((line) => {
+        line.y += setting.speed;
+        line.style.top = line.y + 'px';
+
+        if (line.y >= document.documentElement.clientHeight) {
+            line.y = 0;
+        }
+    });
 }
 
 function startRun(event) {
