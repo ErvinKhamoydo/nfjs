@@ -11,14 +11,15 @@ body {
     display: none;
 }
 
+.show {
+    display: block;
+}
+
 .car, .enemy {
     width: 50px;
     height: 100px;
     background: transparent url('../image/player.png') center / cover no-repeat; 
     position: absolute;
-    left: 50%;
-    bottom: 3%;
-    transform: translateX(-50%);
 }
 
 .game-area {
@@ -36,4 +37,21 @@ body {
     background: #fff;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.start, .score {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 2rem 0;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    font-family: sans-serif;
+    font-weight: 900;
+    background-color: #000000;
+    cursor: pointer;
+    z-index: 200;
 }

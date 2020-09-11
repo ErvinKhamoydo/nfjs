@@ -25,7 +25,16 @@ function getQuantityElements(heightElement) {
 
 function startGame() {
     start.classList.add('hide');
+
+    gameArea.innerHTML = '';
+
+    car.style.left = '50%';
+    car.style.top = 'auto';
+    car.style.bottom = '3%';
+    car.style.transform = 'translateX(-50%)';
+
     setting.start = true;
+    setting.score = 0;
 
     for (let i = 0; i < getQuantityElements(100); i++) {
         const line = document.createElement('div');
@@ -117,7 +126,9 @@ function moveEnemy() {
             carRect.right >= enemyRect.left &&
             carRect.left <= enemyRect.right &&
             carRect.bottom >= enemyRect.top) {
-                setting.start = false;
+            setting.start = false;
+            start.classList.remove('hide');
+            start.style.top = start.offsetHeight + 'px';
         }
     });
 }
