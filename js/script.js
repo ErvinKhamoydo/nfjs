@@ -1,6 +1,11 @@
 const score = document.querySelector('.score');
 const start = document.querySelector('.start');
 const gameArea = document.querySelector('.game-area');
+const soundMovingCar = document.querySelector('.sound-moving-car');
+const soundTurnCar = document.querySelector('.sound-turn-car');
+
+    soundMovingCar.volume= 0.1;
+    soundTurnCar.volume= 0.2;
 
 const keys = {
     ArrowUp: false,
@@ -60,6 +65,8 @@ function startGame() {
     setting.x = car.offsetLeft;
     setting.y = car.offsetTop;
 
+    soundMovingCar.play();
+
     requestAnimationFrame(playGame);
 }
 
@@ -73,10 +80,12 @@ function playGame() {
 
         if (keys.ArrowLeft && setting.x > 25) {
             setting.x -= setting.speed;
+            soundTurnCar.play();
         }
 
         if (keys.ArrowRight && setting.x < (gameArea.offsetWidth - car.offsetWidth / 2)) {
             setting.x += setting.speed;
+            soundTurnCar.play();
         }
 
         if (keys.ArrowUp && setting.y > 0) {
@@ -129,6 +138,7 @@ function moveEnemy() {
             setting.start = false;
             start.classList.remove('hide');
             start.style.top = start.offsetHeight + 'px';
+            soundMovingCar.pause();
         }
     });
 }
@@ -143,8 +153,13 @@ function stopRun(event) {
     event.preventDefault();
 
     keys[event.key] = false;
+
+    soundTurnCar.pause();
 }
 
-start.addEventListener('click', startGame);
+start.addEventListener('click', () => {
+    soundMovingCar.play();
+    startGame();
+});
 document.addEventListener('keydown', startRun);
 document.addEventListener('keyup', stopRun);
