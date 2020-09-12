@@ -4,8 +4,8 @@ const gameArea = document.querySelector('.game-area');
 const soundMovingCar = document.querySelector('.sound-moving-car');
 const soundTurnCar = document.querySelector('.sound-turn-car');
 
-    soundMovingCar.volume= 0.1;
-    soundTurnCar.volume= 0.2;
+soundMovingCar.volume = 0.1;
+soundTurnCar.volume = 0.2;
 
 const keys = {
     ArrowUp: false,
@@ -56,7 +56,14 @@ function startGame() {
         enemy.y = -100 * setting.traffic * (i + 1);
         enemy.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 50)) + 'px';
         enemy.style.top = enemy.y + 'px';
-        enemy.style.background = "transparent url('../image/enemy.png') center / cover no-repeat";
+
+        if (Math.floor(Math.random() * 10) < 5) {
+            enemy.style.background = "transparent url('../image/enemy.png') center / cover no-repeat";
+        } else {
+            enemy.style.background = "transparent url('../image/enemy2.png') center / cover no-repeat";
+        }
+
+
         gameArea.appendChild(enemy);
     }
 
@@ -147,7 +154,6 @@ function startRun(event) {
     event.preventDefault();
 
     keys[event.key] = true;
-    soundMovingCar.play();
 }
 
 function stopRun(event) {
