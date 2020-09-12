@@ -32,23 +32,6 @@ body {
     transform: translateX(-50%);
 }
 
-/* .header{
-    position: absolute;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    color: #fff;
-    font-size: 2rem;
-    font-family: sans-serif;
-    font-weight: 900;
-    z-index: 200;
-} */
-
 .complexity-wrapper {
     width: 100%;
     height: 100%;
