@@ -26,8 +26,8 @@ const keys = {
 const setting = {
     start: false,
     score: 0,
-    speed: 3,
-    traffic: 1.5
+    speed: 0,
+    traffic: 0
 };
 
 const car = document.createElement('div');
@@ -193,11 +193,14 @@ complexity.forEach((btn, i) => {
     btn.addEventListener('click', () => {
 
         if (i === 0) {
-            setting.traffic = 5
+            setting.traffic = 3.5
+            setting.speed = 2;
         } else if (i === 1) {
-            setting.traffic = 3
+            setting.traffic = 2.5
+            setting.speed = 3.5;
         } else {
-            setting.traffic = 1.5
+            setting.traffic = 2;
+            setting.speed = 4.5;
         }
 
         complexityWrapper.classList.add('hide');
