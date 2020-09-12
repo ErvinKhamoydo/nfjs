@@ -8,8 +8,10 @@ const complexityWrapper = document.querySelector('.complexity-wrapper');
 const complexity = document.querySelectorAll('.complexity');
 
 const gameArea = document.querySelector('.game-area');
+
 const soundMovingCar = document.querySelector('.sound-moving-car');
 const soundTurnCar = document.querySelector('.sound-turn-car');
+const soundImpactCar = document.querySelector('.sound-impact-car');
 
 soundMovingCar.volume = 0.1;
 soundTurnCar.volume = 0.2;
@@ -153,9 +155,13 @@ function moveEnemy() {
             carRect.left <= enemyRect.right &&
             carRect.bottom >= enemyRect.top) {
             setting.start = false;
+
             complexityWrapper.classList.remove('hide');
             complexityWrapper.style.marginTop = complexityWrapper.offsetHeight + 'px';
+
             soundMovingCar.pause();
+            soundImpactCar.play();
+
             localStorage.setItem('score', setting.score)
         }
     });
@@ -195,6 +201,8 @@ complexity.forEach((btn, i) => {
         }
 
         complexityWrapper.classList.add('hide');
+
+        soundImpactCar.load();
 
         startGame();
     });
