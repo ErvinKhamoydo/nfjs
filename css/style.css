@@ -7,18 +7,11 @@ body {
     overflow-y: hidden;
 }
 
-.hide {
-    display: none;
-}
-
-.show {
-    display: block;
-}
-
-.car, .enemy {
+.car,
+.enemy {
     width: 50px;
     height: 100px;
-    background: transparent url('../image/player.png') center / cover no-repeat; 
+    background: transparent url('../image/player.png') center / cover no-repeat;
     position: absolute;
 }
 
@@ -27,7 +20,7 @@ body {
     height: 100vh;
     position: relative;
     margin: auto;
-    background: #222222;   
+    background: #222222;
 }
 
 .line {
@@ -39,11 +32,56 @@ body {
     transform: translateX(-50%);
 }
 
-.start, .score {
+/* .header{
+    position: absolute;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    font-family: sans-serif;
+    font-weight: 900;
+    z-index: 200;
+} */
+
+.complexity-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+}
+
+.start,
+.score {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    padding: 2rem 0;
+    background-color: #000000;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    font-family: sans-serif;
+    font-weight: 900;
+    cursor: pointer;
+    z-index: 205;
+}
+
+.score {
+    z-index: 199;
+}
+
+.complexity {
+    width: 33%;
+    display: block;
     margin: 0;
     padding: 2rem 0;
     text-align: center;
@@ -54,4 +92,20 @@ body {
     background-color: #000000;
     cursor: pointer;
     z-index: 200;
+}
+
+.medium {
+    left: 33%;
+}
+
+.hard {
+    left: 63%;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
 }

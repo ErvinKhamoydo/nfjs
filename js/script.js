@@ -1,5 +1,12 @@
 const score = document.querySelector('.score');
+
 const start = document.querySelector('.start');
+const easyBtn = document.querySelector('.start');
+const mediumBtn = document.querySelector('.medium');
+const hardBtn = document.querySelector('.hard');
+const complexityWrapper = document.querySelector('.complexity-wrapper');
+const complexity = document.querySelectorAll('.complexity');
+
 const gameArea = document.querySelector('.game-area');
 const soundMovingCar = document.querySelector('.sound-moving-car');
 const soundTurnCar = document.querySelector('.sound-turn-car');
@@ -18,7 +25,7 @@ const setting = {
     start: false,
     score: 0,
     speed: 3,
-    traffic: 3
+    traffic: 1.5
 };
 
 const car = document.createElement('div');
@@ -62,7 +69,6 @@ function startGame() {
         } else {
             enemy.style.background = "transparent url('../image/enemy2.png') center / cover no-repeat";
         }
-
 
         gameArea.appendChild(enemy);
     }
@@ -143,8 +149,8 @@ function moveEnemy() {
             carRect.left <= enemyRect.right &&
             carRect.bottom >= enemyRect.top) {
             setting.start = false;
-            start.classList.remove('hide');
-            start.style.top = start.offsetHeight + 'px';
+            complexityWrapper.classList.remove('hide');
+            complexityWrapper.style.marginTop = complexityWrapper.offsetHeight + 'px';
             soundMovingCar.pause();
         }
     });
@@ -165,8 +171,28 @@ function stopRun(event) {
 }
 
 start.addEventListener('click', () => {
-    soundMovingCar.play();
-    startGame();
+    start.classList.add('hide');
+
+    complexity.forEach((btn) => {
+        btn.classList.remove('hide');
+        btn.classList.add('show');
+    });
 });
+complexity.forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+
+        if (i === 0) {
+            setting.traffic = 5
+        } else if (i === 1) {
+            setting.traffic = 3
+        } else {
+            setting.traffic = 1.5
+        }
+
+        complexityWrapper.classList.add('hide');
+
+        startGame();
+    });
+})
 document.addEventListener('keydown', startRun);
 document.addEventListener('keyup', stopRun);

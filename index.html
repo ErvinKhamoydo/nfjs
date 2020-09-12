@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +10,20 @@
 
     <title>NeedForJavaScript</title>
 </head>
+
 <body>
-    
+
     <div class="score"></div>
 
     <div class="game">
-        <div class="start">Начать игру</div>
+        <div class="header">
+            <div class="start">Начать игру</div>
+            <div class="complexity-wrapper">
+                <div class="easy complexity hide">Легкий</div>
+                <div class="medium complexity hide">Средний</div>
+                <div class="hard complexity hide">Сложный</div>
+            </div>
+        </div>
         <div class="game-area"></div>
     </div>
 
@@ -23,4 +32,5 @@
     <audio src="./audio/turn.mp3" class="sound-turn-car"></audio>
     <script src="./js/script.js"></script>
 </body>
+
 </html>
