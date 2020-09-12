@@ -89,7 +89,11 @@ function playGame() {
         moveEnemy();
 
         setting.score++;
-        score.textContent = setting.score;
+        if (localStorage.getItem('score') < setting.score) {
+            score.textContent = `Новый рекорд! ${setting.score}`;
+        } else {
+            score.textContent = setting.score;
+        }
 
         if (keys.ArrowLeft && setting.x > 25) {
             setting.x -= setting.speed;
@@ -152,6 +156,7 @@ function moveEnemy() {
             complexityWrapper.classList.remove('hide');
             complexityWrapper.style.marginTop = complexityWrapper.offsetHeight + 'px';
             soundMovingCar.pause();
+            localStorage.setItem('score', setting.score)
         }
     });
 }
