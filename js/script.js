@@ -147,6 +147,7 @@ function startRun(event) {
     event.preventDefault();
 
     keys[event.key] = true;
+    soundMovingCar.play();
 }
 
 function stopRun(event) {
