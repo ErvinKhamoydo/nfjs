@@ -67,9 +67,9 @@ function startGame() {
         enemy.style.top = enemy.y + 'px';
 
         if (Math.floor(Math.random() * 10) < 5) {
-            enemy.style.background = "transparent url('../image/enemy.png') center / cover no-repeat";
+            enemy.style.background = "transparent url('image/enemy.png') center / cover no-repeat";
         } else {
-            enemy.style.background = "transparent url('../image/enemy2.png') center / cover no-repeat";
+            enemy.style.background = "transparent url('image/enemy2.png') center / cover no-repeat";
         }
 
         gameArea.appendChild(enemy);
